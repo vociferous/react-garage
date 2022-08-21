@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot testing matches default snapshot 1`] = `
+<div>
+  <input
+    aria-label="emailId"
+    onChange={[Function]}
+    type="email"
+    value=""
+  />
+</div>
+`;
+
+exports[`snapshot testing matches snapshot w/ placeholder 1`] = `
+<div>
+  <input
+    aria-label="emailId"
+    onChange={[Function]}
+    type="email"
+    value="testEmail@test.com"
+  />
+</div>
+`;
