@@ -1,4 +1,21 @@
 import React, {FC, useEffect, useState} from 'react';
+import styled from 'styled-components';
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: centre;
+    width: 250px;
+`;
+
+const InputBox = styled.input`
+    margin: 8px 8px;
+`
+const ErrorLabel = styled.span`
+    font-size: 12px;
+    color: red;
+`
+
 
 const emailValidator = /^[ ]*([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})[ ]*$/i;
 
@@ -23,7 +40,7 @@ export const EmailEntryBox:FC<EmailEntryBoxProps> = ({
         const newVal = event.currentTarget.value;
         setEmail(newVal);
 
-        if(emailValidator.test(newVal)){ setError('') }
+        if(!newVal || emailValidator.test(newVal)){ setError('') }
         else{ setError('This email is invalid / incomplete')}
     }
 
@@ -32,8 +49,8 @@ export const EmailEntryBox:FC<EmailEntryBoxProps> = ({
         else onEmailChange?.(email)
     }, [email])
 
-    return (<div>
-        <input type="email" aria-label="emailId" value={email} onChange={handleOnChange} />
-        {showErrorToast && !!error && (<i aria-label='error-msg'>{error}</i>)}
-        </div>);
+    return (<Container>
+        <InputBox type="email" aria-label="emailId" value={email} onChange={handleOnChange} />
+        {showErrorToast && !!error && (<ErrorLabel aria-label='error-msg'>{error}</ErrorLabel>)}
+        </Container>);
 }

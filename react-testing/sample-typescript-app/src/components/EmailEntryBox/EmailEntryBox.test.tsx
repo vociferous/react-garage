@@ -17,7 +17,6 @@ describe('snapshot testing', () => {
         let tree = entryBox.toJSON();
         expect(tree).toMatchSnapshot();
     })
-
 })
 
 /** Unit tests & event tests */

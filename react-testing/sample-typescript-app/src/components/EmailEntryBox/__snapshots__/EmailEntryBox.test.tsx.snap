@@ -1,9 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`snapshot testing matches default snapshot 1`] = `
-<div>
+<div
+  className="sc-bczRLJ TBUg"
+>
   <input
     aria-label="emailId"
+    className="sc-gsnTZi swHln"
     onChange={[Function]}
     type="email"
     value=""
@@ -12,9 +15,12 @@ exports[`snapshot testing matches default snapshot 1`] = `
 `;
 
 exports[`snapshot testing matches snapshot w/ placeholder 1`] = `
-<div>
+<div
+  className="sc-bczRLJ TBUg"
+>
   <input
     aria-label="emailId"
+    className="sc-gsnTZi swHln"
     onChange={[Function]}
     type="email"
     value="testEmail@test.com"
