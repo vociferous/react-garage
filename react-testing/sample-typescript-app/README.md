@@ -56,9 +56,9 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 #### Snapshot Testing:
 
 `npm install --save-dev react-test-renderer`
-[Jest Documentation](https://jestjs.io/docs/snapshot-testing`)
+[Jest Documentation](https://jestjs.io/docs/snapshot-testing)
 
 #### DOM Testing:
 
 `npm install --save-dev @testing-library/react`
-[Documentation](https://github.com/testing-library/react-testing-library)
+[Documentation](https://testing-library.com/docs)
