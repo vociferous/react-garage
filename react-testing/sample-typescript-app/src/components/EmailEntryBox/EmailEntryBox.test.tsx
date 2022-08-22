@@ -21,6 +21,12 @@ describe('snapshot testing', () => {
 
 /** Unit tests & event tests */
 describe('basic render tests', () => {
+    /*
+    Test Case:
+    1. Initial Setup,
+    2. Actions - user actions / events
+    3. What is expected
+    */
 
     it('renders input box', () => {
         render(<EmailEntryBox />);
@@ -35,9 +41,8 @@ describe('basic render tests', () => {
       
         const inputElement = screen.getByRole('textbox');
       
-        expect(inputElement).toHaveValue('testEmail');
+        expect(inputElement).toHaveValue('testEmail')
     });      
-
 });
   
 
@@ -48,25 +53,24 @@ describe('invokes props callbacks', () => {
         render(<EmailEntryBox onEmailChange={mockOnEmailChange}/>);
       
         const inputElement = screen.getByRole('textbox');
-        fireEvent.change(inputElement, 'testEmail@byjus.com');
+        fireEvent.change(inputElement, {target: {value: 'testEmail@byjus.com'}});
 
-        await waitFor(() => {
-            expect(mockOnEmailChange).toBeCalled();
-        })
+        await(waitFor(() => {
+            expect(mockOnEmailChange).toHaveBeenCalled();
+        }));
     });      
 
-    // it('invokes onError for invalid emails', async () => {
-    //     const mockOnError = jest.fn();
-    //     render(<EmailEntryBox onError={mockOnError}/>);
+    it('invokes onError for invalid emails', async () => {
+        const mockOnError = jest.fn();
+        render(<EmailEntryBox onError={mockOnError}/>);
       
-    //     const inputElement = screen.getByRole('textbox');
-    //     fireEvent.change(inputElement, 'testInvalidEmail');
+        const inputElement = screen.getByRole('textbox');
+        fireEvent.change(inputElement,  {target: {value: 'testInvalidEmail'}});
 
-    //     await waitFor(() => {
-    //         expect(mockOnError).toBeCalled();
-    //     })
-    // });      
-
+        await(waitFor(() => {
+            expect(mockOnError).toBeCalled();
+        }));
+    });      
 });
 
 describe('error message tests', () => {
@@ -90,6 +94,7 @@ describe('error message tests', () => {
 
         setTimeout(() => {
             const errMsgNode = screen.queryByLabelText('error-msg');
+            expect(errMsgNode).toHaveDisplayValue('This email is invalid / incomplete');
             expect(errMsgNode).toBeNull();
         }, 50)
     })

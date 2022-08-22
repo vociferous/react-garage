@@ -16,8 +16,9 @@ const ErrorLabel = styled.span`
     color: red;
 `
 
-
 const emailValidator = /^[ ]*([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})[ ]*$/i;
+
+const errorString = 'This email is invalid / incomplete';
 
 type EmailEntryBoxProps = {
     initEmail?: string;
@@ -41,7 +42,15 @@ export const EmailEntryBox:FC<EmailEntryBoxProps> = ({
         setEmail(newVal);
 
         if(!newVal || emailValidator.test(newVal)){ setError('') }
-        else{ setError('This email is invalid / incomplete')}
+        else{ setError(errorString)}
+
+        // if(!newVal || emailValidator.test(newVal)){
+        //     setError('');
+        //     onEmailChange?.(email);
+        // }else{
+        //     setError(errorString);
+        //     onError?.(errorString);
+        // }
     }
 
     useEffect(()=>{

@@ -19,7 +19,7 @@ function App() {
         >
           Learn React
         </a>
-        <EmailEntryBox initEmail=''/>
+        <EmailEntryBox/>
       </header>
     </div>
   );
